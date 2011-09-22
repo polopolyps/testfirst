@@ -53,6 +53,7 @@ public abstract class MockedPageIntegrationTestCaseAdapter extends BasicServletT
 
     private File webappDir;
 	private File webappTestResourcesDir;
+	private File webappTestOutputDir;
     private PolopolyContext context;
     private String requestUri;
 
@@ -84,6 +85,7 @@ public abstract class MockedPageIntegrationTestCaseAdapter extends BasicServletT
 		
 		webappDir = new File(webappProjectRoot + webappDirProperty);
         webappTestResourcesDir = new File(webappProjectRoot + "/src/test/resources");
+        webappTestOutputDir = new File(webappProjectRoot + "/target/test-classes");
 
         if (!webappDir.exists()) {
             throw new RuntimeException("The Maven project containing the webapp (" + webappDir.getAbsolutePath()
@@ -190,15 +192,17 @@ public abstract class MockedPageIntegrationTestCaseAdapter extends BasicServletT
 			return result;
 		}
 
-        String velocityPropertiesPath = webappTestResourcesDir.getAbsolutePath() + "/velocity.properties";
-
-    	File file = new File(velocityPropertiesPath);
+		File velocityPropertiesFile = new File(webappTestOutputDir.getAbsolutePath() + "/velocity.properties");
+    	
+    	if (!velocityPropertiesFile.exists()) {
+    	    velocityPropertiesFile = new File(webappTestResourcesDir.getAbsolutePath() + "/velocity.properties");
+    	}
     	
     	try {
-			return new FileInputStream(file);
+			return new FileInputStream(velocityPropertiesFile);
 		} catch (FileNotFoundException e) {
         	throw new RuntimeException("No velocity.properties found in the classpath or " +
-        			"in the webapp project's test resources (" + file.getAbsolutePath() + 
+        			"in the webapp project's test resources (" + velocityPropertiesFile.getAbsolutePath() +
 				"). There should be a one available that is only used for tests.");
 		}
 	}

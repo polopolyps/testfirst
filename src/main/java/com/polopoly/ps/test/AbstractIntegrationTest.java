@@ -60,7 +60,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
 			Class<? extends AbstractIntegrationTest> clazz) throws Exception {
 		if (!clazz.isAssignableFrom(getClass())) {
 			throw new IllegalArgumentException(
-					"Cannot use testContent from other class than parent classes (test content should be isolated so it is possible to refactor it without having to consider unknown dependencies.");
+					"Cannot use method testContent from other class than parent classes (test content should be isolated so it is possible to refactor it without having to consider unknown dependencies.");
 		}
 
 		if (!suffix.startsWith(".")) {

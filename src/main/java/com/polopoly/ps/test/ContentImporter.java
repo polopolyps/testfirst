@@ -15,6 +15,7 @@ import junit.framework.Assert;
 
 import com.polopoly.cm.policy.PolicyCMServer;
 import com.polopoly.ps.hotdeploy.deployer.DefaultSingleFileDeployer;
+import com.polopoly.ps.hotdeploy.deployer.DeploymentResult;
 import com.polopoly.ps.hotdeploy.deployer.FatalDeployException;
 import com.polopoly.ps.hotdeploy.deployer.SingleFileDeployer;
 import com.polopoly.ps.hotdeploy.file.FileDeploymentDirectory;
@@ -62,8 +63,9 @@ public class ContentImporter {
 				return;
 			}
 
-			SingleFileDeployer singleFileDeployer = new DefaultSingleFileDeployer(
-					server);
+			// TODO: Andreas fix: Just adding deploymentResult to make it compile.
+			SingleFileDeployer singleFileDeployer = new DefaultSingleFileDeployer(server, new DeploymentResult());
+			// End Andreas fix
 
 			LOGGER.log(Level.INFO, "Importing " + resourceName + ".");
 

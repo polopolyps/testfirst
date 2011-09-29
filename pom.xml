@@ -29,7 +29,6 @@
       <groupId>${project.groupId}</groupId>
       <artifactId>hotdeploy</artifactId>
       <version>${project.version}</version>
-      <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>com.polopoly.ps</groupId>

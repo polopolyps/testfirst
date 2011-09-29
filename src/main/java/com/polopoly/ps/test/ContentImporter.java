@@ -63,9 +63,7 @@ public class ContentImporter {
 				return;
 			}
 
-			// TODO: Andreas fix: Just adding deploymentResult to make it compile.
 			SingleFileDeployer singleFileDeployer = new DefaultSingleFileDeployer(server, new DeploymentResult());
-			// End Andreas fix
 
 			LOGGER.log(Level.INFO, "Importing " + resourceName + ".");
 

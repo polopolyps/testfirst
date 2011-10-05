@@ -26,7 +26,7 @@ public class RenderOperationStorage {
         private TopModel model;
         private TestableController controller;
 
-        public RenderOperation(ContentId policy, TestableController controller, TopModel model) {
+        public RenderOperation(ContentId policy, TestableController controller, TopModel topModel) {
             this.policy = policy;
             this.model = new TopModelImpl((ModelTransparent) ((TopModelImpl) model).getModel().clone());
             this.controller = controller;

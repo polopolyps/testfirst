@@ -6,14 +6,9 @@ import java.util.logging.Logger;
 import com.polopoly.application.IllegalApplicationStateException;
 import com.polopoly.cache.CacheSettings;
 import com.polopoly.cache.LRUSynchronizedUpdateCache;
-import com.polopoly.cm.client.CMException;
 import com.polopoly.cm.client.ContentCacheSettings;
 import com.polopoly.cm.client.EjbCmClient;
-import com.polopoly.cm.policy.Policy;
 import com.polopoly.util.client.PolopolyClient;
-import com.polopoly.util.client.PolopolyContext;
-import com.polopoly.util.exception.PolicyCreateException;
-import com.polopoly.util.policy.Util;
 
 /**
  * Use this for initialization in the integration tests. It configures content
@@ -25,11 +20,11 @@ public class PolopolyTestClientInitializer extends PolopolyClientInitializer
 	private static final Logger LOGGER = Logger
 			.getLogger(PolopolyTestClientInitializer.class.getName());
 
-	private static Policy fakeSite;
-
+	private boolean attachSolr = false;
+	
 	@Override
 	protected void configureClient(PolopolyClient client) {
-		client.setAttachSolrSearchClient(true);
+		client.setAttachSolrSearchClient(isAttachSolr());
 	}
 
 	@Override
@@ -72,23 +67,11 @@ public class PolopolyTestClientInitializer extends PolopolyClientInitializer
 		return result;
 	}
 
-	protected Policy getFakeSite(PolopolyContext context)
-			throws PolicyCreateException {
-		if (fakeSite == null) {
-			try {
-				fakeSite = context.createPolicy(2, "p.siteengine.Site");
-				fakeSite.getContent().commit();
+	public void setAttachSolr(boolean attachSolr) {
+		this.attachSolr = attachSolr;
+	}
 
-				LOGGER.log(
-						Level.INFO,
-						"There was no site finder. Created fake site "
-								+ Util.util(fakeSite) + " and returned it.");
-
-			} catch (CMException e) {
-				throw new PolicyCreateException("Cannot create fake site", e);
-			}
-		}
-
-		return fakeSite;
+	public boolean isAttachSolr() {
+		return attachSolr;
 	}
 }

@@ -17,7 +17,7 @@ public class PolopolyClientInitializer implements ClientInitializer {
 	private static final Logger logger = Logger
 			.getLogger(PolopolyClientInitializer.class.getName());
 	private PolopolyClientContext initializedContext;
-
+	
 	public ClientContext initialize(String[] args) throws ClientException {
 		return initialize();
 	}

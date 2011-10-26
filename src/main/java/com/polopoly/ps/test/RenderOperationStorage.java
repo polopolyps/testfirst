@@ -23,12 +23,12 @@ public class RenderOperationStorage {
 
     public static class RenderOperation {
         private ContentId policy;
-        private TopModel model;
+        private TopModel topModel;
         private TestableController controller;
 
         public RenderOperation(ContentId policy, TestableController controller, TopModel topModel) {
             this.policy = policy;
-            this.model = new TopModelImpl((ModelTransparent) ((TopModelImpl) model).getModel().clone());
+            this.topModel = new TopModelImpl((ModelTransparent) ((TopModelImpl) topModel).getModel().clone());
             this.controller = controller;
         }
 
@@ -37,7 +37,7 @@ public class RenderOperationStorage {
         }
 
         public TopModel getModel() {
-            return this.model;
+            return this.topModel;
         }
 
         public TestableController getController() {

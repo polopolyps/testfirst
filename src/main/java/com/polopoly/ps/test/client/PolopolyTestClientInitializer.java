@@ -15,13 +15,15 @@ import com.polopoly.util.client.PolopolyClient;
  * filters enabling testing of moderation and deletion of stuff that should not
  * be visible to the front end.
  */
-public class PolopolyTestClientInitializer extends PolopolyClientInitializer
-		implements ClientInitializer {
-	private static final Logger LOGGER = Logger
-			.getLogger(PolopolyTestClientInitializer.class.getName());
+public class PolopolyTestClientInitializer extends PolopolyClientInitializer implements ClientInitializer {
+	private static final Logger LOGGER = Logger.getLogger(PolopolyTestClientInitializer.class.getName());
 
+	/**
+	 * Don't default to attaching SOLR because of all the dependencies that are
+	 * required on connect.
+	 */
 	private boolean attachSolr = false;
-	
+
 	@Override
 	protected void configureClient(PolopolyClient client) {
 		client.setAttachSolrSearchClient(isAttachSolr());
@@ -31,8 +33,7 @@ public class PolopolyTestClientInitializer extends PolopolyClientInitializer
 	protected PolopolyClient createClient() {
 		return new PolopolyClient() {
 			@Override
-			protected void setUpLRUSynchronizedUpdateCache(
-					LRUSynchronizedUpdateCache cache) {
+			protected void setUpLRUSynchronizedUpdateCache(LRUSynchronizedUpdateCache cache) {
 				super.setUpLRUSynchronizedUpdateCache(cache);
 
 				try {

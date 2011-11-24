@@ -12,9 +12,9 @@ import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.Velocity;
 
 import com.polopoly.model.ModelPathUtil;
-import com.polopoly.ps.pcmd.testablility.RenderOperationStorage;
-import com.polopoly.ps.pcmd.testablility.TestableController;
-import com.polopoly.ps.pcmd.testablility.RenderOperationStorage.RenderOperation;
+import com.polopoly.ps.testablility.RenderOperationStorage;
+import com.polopoly.ps.testablility.TestableController;
+import com.polopoly.ps.testablility.RenderOperationStorage.RenderOperation;
 import com.polopoly.siteengine.model.TopModel;
 import com.polopoly.util.CheckedCast;
 

@@ -10,11 +10,11 @@ import junit.framework.Assert;
 import org.junit.After;
 import org.junit.Before;
 
+import com.polopoly.ps.service.NoSuchServiceException;
 import com.polopoly.ps.test.client.Client;
 import com.polopoly.ps.test.client.ClientContext;
 import com.polopoly.ps.test.client.ClientException;
 import com.polopoly.ps.test.client.ClientInitializer;
-import com.polopoly.ps.test.client.NoSuchServiceException;
 import com.polopoly.ps.test.client.PolopolyClientContext;
 import com.polopoly.ps.test.client.PolopolyTestClientInitializer;
 import com.polopoly.user.server.Caller;

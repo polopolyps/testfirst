@@ -24,7 +24,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
 
-import com.polopoly.ps.pcmd.testablility.RenderOperationStorage;
+import com.polopoly.ps.testablility.RenderOperationStorage;
 import com.polopoly.render.AbstractRenderDispatcher;
 import com.polopoly.render.UserHistory;
 import com.polopoly.user.server.Caller;

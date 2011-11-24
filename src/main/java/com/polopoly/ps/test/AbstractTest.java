@@ -10,11 +10,11 @@ import junit.framework.Assert;
 import org.junit.After;
 import org.junit.Before;
 
+import com.polopoly.ps.service.ServiceGetter;
+import com.polopoly.ps.service.ServiceGetter.ServicesBackup;
 import com.polopoly.ps.test.client.Client;
 import com.polopoly.ps.test.client.ClientContext;
 import com.polopoly.ps.test.client.ClientInitializer;
-import com.polopoly.ps.test.service.ServiceGetter;
-import com.polopoly.ps.test.service.ServiceGetter.ServicesBackup;
 
 public abstract class AbstractTest {
 	protected static boolean initialized;

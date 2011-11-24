@@ -1,7 +1,7 @@
 package com.polopoly.ps.test.client;
 
-import com.polopoly.ps.test.service.Service;
-import com.polopoly.ps.test.service.ServiceGetter;
+import com.polopoly.ps.service.Service;
+import com.polopoly.ps.service.ServiceGetter;
 
 
 /**

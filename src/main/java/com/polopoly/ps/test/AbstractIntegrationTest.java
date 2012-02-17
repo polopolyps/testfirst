@@ -1,5 +1,6 @@
 package com.polopoly.ps.test;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.logging.Level;
@@ -20,7 +21,7 @@ import com.polopoly.ps.test.client.PolopolyTestClientInitializer;
 import com.polopoly.user.server.Caller;
 
 public abstract class AbstractIntegrationTest extends AbstractTest {
-	private static final String TEST_CLASS_NAME_SUFFIX = "IntegrationTest";
+	private static final String[] TEST_CLASS_NAME_SUFFIXES = new String[]{"IntegrationTest", "IT"};
 	protected static PolopolyClientContext context;
 
 	private static Set<Class<? extends AbstractIntegrationTest>> attemptedImports = new HashSet<Class<? extends AbstractIntegrationTest>>();
@@ -31,9 +32,13 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
 
 	@Before
 	public void checkClassName() throws Exception {
-		if (!getClass().getName().endsWith(TEST_CLASS_NAME_SUFFIX)) {
-			Assert.fail("Class name must end with " + TEST_CLASS_NAME_SUFFIX);
-		}
+        boolean valid_suffix = false;
+        for (String suffix : TEST_CLASS_NAME_SUFFIXES) {
+		    if (getClass().getName().endsWith(suffix)) {
+			    valid_suffix = true;
+		    }
+        }
+        if (!valid_suffix) Assert.fail("Class name must end with one of: " + Arrays.toString(TEST_CLASS_NAME_SUFFIXES));
 	}
 
 	protected static String uri(Content... contents) throws Exception {

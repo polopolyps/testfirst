@@ -22,23 +22,23 @@ public class PolopolyClientInitializer implements ClientInitializer {
 		return initialize();
 	}
 
-	public ClientContext initialize() throws ClientException {
+	public synchronized ClientContext initialize() throws ClientException {
 		if (initializedContext != null) {
 			logger.log(Level.WARNING, "Attempt to initialized twice.");
 
 			return initializedContext;
 		}
 
-		PolopolyClient client = createClient();
+        PolopolyClient client = createClient();
 
-		client.setAttachSearchService(true);
-		client.setAttachStatisticsService(true);
-		client.setAttachPollService(true);
+        client.setAttachSearchService(true);
+        client.setAttachStatisticsService(true);
+        client.setAttachPollService(true);
 
-		client.setAttachLRUSynchronizedUpdateCache(true);
-		client.setAttachSolrSearchClient(true);
+        client.setAttachLRUSynchronizedUpdateCache(true);
+        client.setAttachSolrSearchClient(true);
 
-		configureClient(client);
+        configureClient(client);
 
 		try {
 			initializedContext = new PolopolyClientContext(client.connect());

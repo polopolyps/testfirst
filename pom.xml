@@ -9,9 +9,6 @@
 
   <name>Test first</name>
   
-  <properties>
-  	<polopoly.version>10.5-DR3-SNAPSHOT</polopoly.version>
-  </properties>
   <dependencies>
     <dependency>
       <groupId>com.polopoly.extensions</groupId>

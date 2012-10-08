@@ -8,12 +8,34 @@
   <packaging>jar</packaging>
 
   <name>Test first</name>
+
+  <properties>
+    <earliest.compatible.polopoly.version>10.3-DR2-r59409</polopoly.version>
+ </properties>
+
+  <distributionManagement>
+    <repository>
+      <uniqueVersion>false</uniqueVersion>
+      <id>professional-services</id>
+      <name>Professional Services</name>
+      <url>http://maven.polopoly.com/nexus/content/repositories/professional-services</url>
+      <layout>default</layout>
+    </repository>
+    <snapshotRepository>
+      <uniqueVersion>false</uniqueVersion>
+      <id>professional-services-snapshots</id>
+      <name>Professional Services Snapshots</name>
+      <url>http://maven.polopoly.com/nexus/content/repositories/professional-services-snapshots</url>
+      <layout>default</layout>
+    </snapshotRepository>
+  </distributionManagement>
   
   <dependencies>
     <dependency>
       <groupId>com.polopoly.extensions</groupId>
       <artifactId>cm-velocity-integration</artifactId>
-      <version>${polopoly.version}</version>
+      <version>${earliest.compatible.polopoly.version}</version>
+      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>${project.groupId}</groupId>

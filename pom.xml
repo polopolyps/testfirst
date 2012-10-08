@@ -10,7 +10,7 @@
   <name>Test first</name>
 
   <properties>
-    <earliest.compatible.polopoly.version>10.3-DR2-r59409</polopoly.version>
+    <earliest.compatible.polopoly.version>10.3-DR2-r59409</earliest.compatible.polopoly.version>
  </properties>
 
   <distributionManagement>
